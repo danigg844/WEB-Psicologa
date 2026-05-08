@@ -402,7 +402,9 @@
                     </div>
                 </div>
                 <div class="contact-form-col fade-up">
-                    <form class="contact-form" id="contact-form">
+                    <form class="contact-form" id="contact-form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contacto">
+                        <p class="visually-hidden"><label>No rellenar: <input name="bot-field"></label></p>
                         <div class="form-row">
                             <div class="form-group">
                                 <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre" required>

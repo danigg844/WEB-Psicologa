@@ -1131,6 +1131,17 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
 
 .form-textarea { resize: vertical; min-height: 110px; }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 .form-disclaimer {
     font-family: var(--font-body);
     font-size: 0.72rem;

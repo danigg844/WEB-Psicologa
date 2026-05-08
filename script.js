@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Contact form (visual feedback) ---
+    // --- Contact form (Netlify Forms submission) ---
     const contactForm = document.getElementById('contact-form');
 
     if (contactForm) {
@@ -287,17 +287,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const btn = contactForm.querySelector('.btn');
             const originalHTML = btn.innerHTML;
+            btn.innerHTML = 'Enviando...';
+            btn.disabled = true;
 
-            btn.innerHTML = 'Mensaje enviado <span style="margin-left:4px">&#10003;</span>';
-            btn.style.background = 'linear-gradient(135deg, #6EC6CA, #4BAAAF)';
-            btn.style.transform = 'scale(0.98)';
+            const formData = new FormData(contactForm);
 
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.background = '';
-                btn.style.transform = '';
-                contactForm.reset();
-            }, 3000);
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(response => {
+                if (response.ok) {
+                    btn.innerHTML = 'Mensaje enviado <span style="margin-left:4px">&#10003;</span>';
+                    btn.style.background = 'linear-gradient(135deg, #6EC6CA, #4BAAAF)';
+                    contactForm.reset();
+                } else {
+                    btn.innerHTML = 'Error al enviar. Inténtalo de nuevo.';
+                    btn.style.background = '#D4874D';
+                }
+            })
+            .catch(() => {
+                btn.innerHTML = 'Error al enviar. Inténtalo de nuevo.';
+                btn.style.background = '#D4874D';
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            });
         });
     }
 
