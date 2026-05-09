@@ -1283,6 +1283,7 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
 
     .nav-menu .nav-link { color: var(--color-text-muted); }
     .nav-menu .nav-link:hover { color: var(--color-text-dark); }
+    .nav-menu li:last-child { margin-top: var(--spacing-xl); }
 
     .nav-toggle { display: flex; }
     .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
