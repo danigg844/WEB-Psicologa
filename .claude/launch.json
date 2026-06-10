@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "llanos-web",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "C:\\Users\\xao-j\\llanos-garcia-psicologa", "-l", "3030"],
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3030"],
       "port": 3030
     }
   ]

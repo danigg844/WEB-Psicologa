@@ -1,26 +1,26 @@
 /* ============================================
    LLANOS GARCÍA SÁNCHEZ — Psicóloga
-   Palette: Aquamarine + Pastel Violet
+   Palette: Terracota + Salvia (cálida, natural)
    ============================================ */
 
 :root {
-    --color-bg: #F5F0F7;
-    --color-bg-alt: #EDE7F2;
-    --color-bg-card: #FAFAFE;
-    --color-aqua: #9DD8DB;
-    --color-aqua-dark: #7CCAD0;
-    --color-aqua-light: rgba(157, 216, 219, 0.10);
-    --color-aqua-glow: rgba(157, 216, 219, 0.07);
-    --color-violet: #B8A9D4;
-    --color-violet-dark: #9B89BE;
-    --color-violet-deep: #7B6BA0;
-    --color-violet-light: rgba(184, 169, 212, 0.12);
-    --color-lavender: #D4CCE6;
-    --color-text-dark: #2D2540;
-    --color-text-medium: #5C5270;
-    --color-text-muted: #8A819C;
+    --color-bg: #FBF3EA;
+    --color-bg-alt: #F4E6D7;
+    --color-bg-card: #FFFBF5;
+    --color-aqua: #E0A07A;
+    --color-aqua-dark: #C97D52;
+    --color-aqua-light: rgba(224, 160, 122, 0.12);
+    --color-aqua-glow: rgba(224, 160, 122, 0.08);
+    --color-violet: #A9B98E;
+    --color-violet-dark: #8AA06C;
+    --color-violet-deep: #677A4E;
+    --color-violet-light: rgba(169, 185, 142, 0.14);
+    --color-lavender: #EAD9C4;
+    --color-text-dark: #3A2E22;
+    --color-text-medium: #6E5D4C;
+    --color-text-muted: #A0907E;
     --color-white: #FFFFFF;
-    --color-border: rgba(184, 169, 212, 0.20);
+    --color-border: rgba(201, 125, 82, 0.18);
 
     --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -820,6 +820,15 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
 
 .image-placeholder--tall { aspect-ratio: 3/4; }
 
+.about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    position: relative;
+    z-index: 1;
+}
+
 /* --- Stats --- */
 .about-stats {
     display: grid;
@@ -896,7 +905,7 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
 
 .workshops-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg);
 }
 
