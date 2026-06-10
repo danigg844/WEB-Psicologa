@@ -381,6 +381,7 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
 .pulse-dot {
     width: 8px;
     height: 8px;
+    flex-shrink: 0;
     border-radius: 50%;
     background-color: var(--color-aqua);
     animation: pulse 2s ease-in-out infinite;
@@ -607,12 +608,17 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: var(--spacing-lg);
 }
 
 .service-card {
     position: relative;
+    grid-column: span 2;
+}
+
+.services-grid .workshop-card {
+    grid-column: span 3;
 }
 
 .service-card::before {
@@ -897,17 +903,8 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
 }
 
 /* ============================================
-   WORKSHOPS SECTION
+   WORKSHOP CARDS
    ============================================ */
-.section-workshops {
-    background-color: var(--color-bg-alt);
-}
-
-.workshops-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
-}
 
 .workshop-card {
     background: var(--color-white);
@@ -1263,7 +1260,8 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
    ============================================ */
 @media (max-width: 1024px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .workshops-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-card,
+    .services-grid .workshop-card { grid-column: span 1; }
     .about-layout { grid-template-columns: 1fr; gap: var(--spacing-xl); }
     .contact-layout { grid-template-columns: 1fr; gap: var(--spacing-xl); }
     .cursor-glow { display: none; }
@@ -1308,8 +1306,6 @@ a { text-decoration: none; color: inherit; transition: color var(--transition-fa
     .about-layout { grid-template-columns: 1fr; }
     .about-image-col { max-width: 400px; margin: 0 auto; }
     .about-stats { grid-template-columns: repeat(3, 1fr); gap: var(--spacing-sm); }
-
-    .workshops-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 
     .footer-top { flex-direction: column; gap: var(--spacing-xl); }
     .footer-nav { flex-wrap: wrap; gap: var(--spacing-xl); }
