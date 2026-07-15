@@ -65,7 +65,7 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                <li><a href="sobre-mi.html" class="nav-link">Sobre mí</a></li>
                 <li><a href="#contacto" class="nav-link nav-link--cta">Contacto</a></li>
             </ul>
         </div>
@@ -265,7 +265,10 @@
                             <!-- TODO rendimiento: renombrar el binario a "foto-llanos.jpg" (sin espacios ni
                                  mayúsculas) y actualizar el src; considerar servirlo también en WebP.
                                  No renombrar el archivo aquí: vive en el repo. -->
-                            <img src="Foto Llanos.jpg" alt="Foto de Llanos García Sánchez" class="about-photo" loading="lazy" decoding="async" width="1154" height="1731">
+                            <picture>
+                                <source srcset="foto-llanos.webp" type="image/webp">
+                                <img src="Foto Llanos.jpg" alt="Foto de Llanos García Sánchez" class="about-photo" loading="lazy" decoding="async" width="1154" height="1731">
+                            </picture>
                         </div>
                         <div class="about-image-accent"></div>
                     </div>
@@ -298,6 +301,10 @@
                         <span class="specialty-tag">Constelaciones circulares</span>
                         <span class="specialty-tag">Trabajo psicocorporal</span>
                     </div>
+                    <a href="sobre-mi.html" class="about-more-link fade-up" aria-label="Conoce la historia y la formación completa de Llanos García Sánchez">
+                        Conoce mi historia y formación
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -416,7 +423,7 @@
                         <h4 class="footer-nav-title">Navegación</h4>
                         <a href="#inicio">Inicio</a>
                         <a href="#servicios">Servicios</a>
-                        <a href="#sobre-mi">Sobre mí</a>
+                        <a href="sobre-mi.html">Sobre mí</a>
                     </div>
                     <div class="footer-nav-group">
                         <h4 class="footer-nav-title">Más</h4>
