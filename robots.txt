@@ -1,0 +1,25 @@
+# robots.txt — Llanos García Sánchez
+
+User-agent: *
+Allow: /
+
+# Bots de IA — permitidos explícitamente para permitir citación en respuestas de IA
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://llanosgarcia.com/sitemap.xml

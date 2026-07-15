@@ -1,15 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Preloader ---
-    const preloader = document.getElementById('preloader');
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-        }, 800);
-    });
-    setTimeout(() => {
-        preloader.classList.add('hidden');
-    }, 3000);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- Scroll Animations (Intersection Observer) ---
     const fadeElements = document.querySelectorAll('.fade-up');
@@ -43,18 +34,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
 
+    const closeMenu = () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        const isOpen = navMenu.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMenu();
         });
+    });
+
+    // Cerrar con Escape y devolver el foco al botón
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            closeMenu();
+            navToggle.focus();
+        }
     });
 
     // --- Smooth scroll for anchor links ---
@@ -65,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) {
                 const offset = 80;
                 const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top: position, behavior: 'smooth' });
+                window.scrollTo({ top: position, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
             }
         });
     });
@@ -73,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Cursor glow effect (desktop only) ---
     const cursorGlow = document.getElementById('cursor-glow');
 
-    if (window.matchMedia('(min-width: 1024px)').matches && cursorGlow) {
+    if (!prefersReducedMotion && window.matchMedia('(min-width: 1024px)').matches && cursorGlow) {
         let mouseX = 0, mouseY = 0;
         let glowX = 0, glowY = 0;
 
@@ -98,87 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animateGlow();
     }
 
-    // --- Floating Particles ---
-    const canvas = document.getElementById('particles-canvas');
-    if (canvas && window.matchMedia('(min-width: 1024px)').matches) {
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let animFrame;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.4 + 0.1;
-                this.hue = Math.random() > 0.5 ? '110, 198, 202' : '184, 169, 212';
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.hue}, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 40; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(110, 198, 202, ${0.06 * (1 - dist / 150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            animFrame = requestAnimationFrame(animateParticles);
-        }
-
-        animateParticles();
-    }
-
     // --- Text highlight animation on scroll ---
     const highlights = document.querySelectorAll('.text-highlight');
 
@@ -193,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     highlights.forEach(el => highlightObserver.observe(el));
 
     // --- Service cards tilt effect (desktop) ---
-    if (window.matchMedia('(min-width: 1024px)').matches) {
+    if (!prefersReducedMotion && window.matchMedia('(min-width: 1024px)').matches) {
         document.querySelectorAll('.service-card-inner').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -322,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Magnetic effect on CTA button ---
-    if (window.matchMedia('(min-width: 1024px)').matches) {
+    if (!prefersReducedMotion && window.matchMedia('(min-width: 1024px)').matches) {
         document.querySelectorAll('.nav-link--cta, .btn-primary').forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
                 const rect = btn.getBoundingClientRect();

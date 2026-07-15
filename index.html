@@ -4,25 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Llanos García Sánchez — Psicóloga en Albacete</title>
-    <meta name="description" content="Psicóloga en Albacete especializada en terapia individual, de pareja y talleres de desarrollo personal. Llanos García Sánchez — acompañamiento profesional y cercano.">
+    <meta name="description" content="Psicóloga en Albacete especializada en terapia Gestalt individual online, círculos de mujeres y talleres de desarrollo personal. Llanos García Sánchez — acompañamiento profesional y cercano.">
+    <meta name="author" content="Llanos García Sánchez">
+    <link rel="canonical" href="https://llanosgarcia.com/">
+
+    <!-- Open Graph / Twitter -->
+    <!-- TODO: og-image.jpg debe ser 1200×630. Dominio de producción confirmado: https://llanosgarcia.com/ -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Llanos García Sánchez — Psicóloga en Albacete">
+    <meta property="og:description" content="Acompañamiento psicológico a través de la terapia Gestalt, la psicología integrativa y el trabajo psicocorporal.">
+    <meta property="og:image" content="https://llanosgarcia.com/og-image.jpg">
+    <meta property="og:url" content="https://llanosgarcia.com/">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Psychologist",
+      "name": "Llanos García Sánchez",
+      "description": "Psicóloga en Albacete especializada en terapia Gestalt, psicología integrativa y trabajo psicocorporal.",
+      "telephone": "+34661542941",
+      "email": "llagarca@gmail.com",
+      "areaServed": "Albacete, España",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Albacete",
+        "addressCountry": "ES"
+      },
+      "knowsAbout": ["Terapia Gestalt", "Psicología integrativa", "TRE", "Trabajo psicocorporal", "Constelaciones circulares"]
+    }
+    </script>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <span class="preloader-text">Llanos García Sánchez</span>
-        </div>
-    </div>
-
     <!-- Cursor glow -->
     <div class="cursor-glow" id="cursor-glow"></div>
-
-    <!-- Floating particles -->
-    <canvas id="particles-canvas" class="particles-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -30,7 +51,7 @@
             <a href="#" class="nav-logo">
                 Llanos García
             </a>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -44,10 +65,13 @@
         </div>
     </nav>
 
+    <main>
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-bg-wrap">
-            <video class="hero-bg-video" autoplay muted loop playsinline>
+            <!-- TODO rendimiento: el vídeo es el elemento más pesado (LCP). Debería pesar < 2-3 MB.
+                 No re-comprimir aquí (es binario); optimizarlo aparte con la propietaria. -->
+            <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
                 <source src="video-hero-comprimido2.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
@@ -60,7 +84,7 @@
             <h1 class="hero-title fade-up">
                 Te acompaño a mirar tus heridas para comprenderte y habitar tu presente con mayor libertad.
             </h1>
-            <p class="hero-description fade-up">Un espacio seguro de acompañamiento piscológico a través de la psicologia Gestalt, la psicología integrativa y el trabajo psicocorporal</p>
+            <p class="hero-description fade-up">Un espacio seguro de acompañamiento psicológico a través de la psicología Gestalt, la psicología integrativa y el trabajo psicocorporal</p>
             <div class="hero-actions fade-up">
                 <a href="#contacto" class="btn btn-primary">
                     Reserva tu sesión
@@ -102,7 +126,7 @@
                             <span class="service-tag">Depresión</span>
                             <span class="service-tag">Autoestima</span>
                         </div>
-                        <a href="#contacto" class="service-card-link">
+                        <a href="#contacto" class="service-card-link" aria-label="Más información sobre terapia individual online">
                             Más información
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </a>
@@ -125,7 +149,7 @@
                             <span class="service-tag">Crisis</span>
                             <span class="service-tag">Vínculo</span>
                         </div>
-                        <a href="#contacto" class="service-card-link">
+                        <a href="#contacto" class="service-card-link" aria-label="Más información sobre el círculo de mujeres">
                             Más información
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </a>
@@ -145,13 +169,13 @@
                             </svg>
                         </div>
                         <h3 class="service-card-title">Taller grupal In Corpore</h3>
-                        <p class="service-card-description">Un espacio para la reconexión donde la regulación de la respiración, el movimiento con consciencia, la escucha de la sensaciones y la experimentación  sensorial son los vehículos que nos acercan a nosotras mismas.</p>
+                        <p class="service-card-description">Un espacio para la reconexión donde la regulación de la respiración, el movimiento con consciencia, la escucha de las sensaciones y la experimentación sensorial son los vehículos que nos acercan a nosotras mismas.</p>
                         <div class="service-card-tags">
                             <span class="service-tag">Gestalt</span>
                             <span class="service-tag">Vivencial</span>
                             <span class="service-tag">Grupal</span>
                         </div>
-                        <a href="#contacto" class="service-card-link">
+                        <a href="#contacto" class="service-card-link" aria-label="Más información sobre el taller grupal In Corpore">
                             Más información
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </a>
@@ -177,7 +201,7 @@
                             Grupo reducido
                         </div>
                     </div>
-                    <a href="https://www.semilladelser.com/" target="_blank" rel="noopener" class="workshop-card-link">
+                    <a href="https://www.semilladelser.com/" target="_blank" rel="noopener" class="workshop-card-link" aria-label="Más información sobre el retiro Hacia mi verdadero ser">
                         Más información
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
@@ -202,7 +226,7 @@
                             Abierto
                         </div>
                     </div>
-                    <a href="#contacto" class="workshop-card-link">
+                    <a href="#contacto" class="workshop-card-link" aria-label="Más información sobre el retiro de menopausia">
                         Más información
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
@@ -232,7 +256,10 @@
                 <div class="about-image-col fade-up">
                     <div class="about-image-frame">
                         <div class="image-placeholder image-placeholder--tall">
-                            <img src="Foto Llanos.jpg" alt="Foto de Llanos García Sánchez" class="about-photo">
+                            <!-- TODO rendimiento: renombrar el binario a "foto-llanos.jpg" (sin espacios ni
+                                 mayúsculas) y actualizar el src; considerar servirlo también en WebP.
+                                 No renombrar el archivo aquí: vive en el repo. -->
+                            <img src="Foto Llanos.jpg" alt="Foto de Llanos García Sánchez" class="about-photo" loading="lazy" decoding="async" width="1154" height="1731">
                         </div>
                         <div class="about-image-accent"></div>
                     </div>
@@ -241,6 +268,9 @@
                     <span class="section-label fade-up">Sobre mí</span>
                     <h2 class="section-title fade-up">Llanos García <span class="text-highlight">Sánchez</span></h2>
                     <p class="section-description fade-up">Como psicóloga especializada en terapia Gestalt, psicología integrativa, técnicas de liberación del trauma (TRE) y trabajo psicocorporal, mi compromiso es acompañar a las personas en sus procesos de transformación, ofreciendo un espacio seguro donde comprender y sanar desde una mirada integradora y compasiva.</p>
+                    <!-- IMPORTANTE: Estas cifras (25 años, 1000 pacientes, 100 talleres) deben ser
+                         reales y verificadas. Al tratarse de un profesional sanitario, no deben
+                         exagerarse ni inventarse. Revísalas con la profesional antes de publicar. -->
                     <div class="about-stats fade-up">
                         <div class="stat-item">
                             <span class="stat-number" data-target="25">0</span>
@@ -320,16 +350,20 @@
                         <p class="visually-hidden"><label>No rellenar: <input name="bot-field"></label></p>
                         <div class="form-row">
                             <div class="form-group">
+                                <label for="name" class="visually-hidden">Tu nombre</label>
                                 <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre" required>
                             </div>
                             <div class="form-group">
+                                <label for="phone" class="visually-hidden">Tu teléfono</label>
                                 <input type="tel" id="phone" name="phone" class="form-input" placeholder="Tu teléfono">
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="email" class="visually-hidden">Tu email</label>
                             <input type="email" id="email" name="email" class="form-input" placeholder="Tu email" required>
                         </div>
                         <div class="form-group">
+                            <label for="service" class="visually-hidden">¿En qué puedo ayudarte?</label>
                             <select id="service" name="service" class="form-input form-select">
                                 <option value="" disabled selected>¿En qué puedo ayudarte?</option>
                                 <option value="individual">Terapia individual online</option>
@@ -340,6 +374,7 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="message" class="visually-hidden">Cuéntame brevemente qué necesitas</label>
                             <textarea id="message" name="message" class="form-input form-textarea" placeholder="Cuéntame brevemente qué necesitas..." rows="4" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
@@ -352,6 +387,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
